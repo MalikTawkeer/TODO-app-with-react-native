@@ -25,7 +25,12 @@ export const HomeScreen = ({ navigation }) => {
           placeholder="Search"
           width="60%"
         />
-        <Text style={styles.header}>Notes</Text>
+        <Text style={styles.header}>
+          Notes{"   "}
+          <Text
+            style={{ fontSize: 25, color: "blue", fontWeight: "800" }}
+          >{`[${todos.length}]`}</Text>
+        </Text>
       </View>
       <View style={styles.listContainer}>
         <FlatList
@@ -37,6 +42,7 @@ export const HomeScreen = ({ navigation }) => {
               }
             >
               <TodoRowView
+                id={item.id}
                 title={item.title}
                 description={item.description}
                 status={item.status}
