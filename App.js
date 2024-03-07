@@ -1,9 +1,14 @@
 import { Navigation } from "./navigation/naviagtion";
-import {NavigationContainer} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
+
+import { TodoContextProvider } from "./contexts/todos.context";
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Navigation />
+      <TodoContextProvider>
+        <Navigation />
+      </TodoContextProvider>
     </NavigationContainer>
   );
 }

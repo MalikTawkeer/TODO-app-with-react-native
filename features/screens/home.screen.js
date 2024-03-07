@@ -10,29 +10,12 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import { TodoRowView } from "../../components/todoRowView";
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+import { TodoContext } from "../../contexts/todos.context";
 
 export const HomeScreen = ({ navigation }) => {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "project meeting",
-      description: "i have to be there fast",
-      status: false,
-    },
-    {
-      id: 2,
-      title: "client meet",
-      description: "i have to be there fast",
-      status: false,
-    },
-    {
-      id: 3,
-      title: "deployments",
-      description: "i have to be there fast",
-      status: false,
-    },
-  ]);
+  const { todos } = useContext(TodoContext);
   return (
     <View style={styles.container}>
       <View>
@@ -62,12 +45,14 @@ export const HomeScreen = ({ navigation }) => {
           )}
           keyExtractor={(item) => item.id}
         />
-        <Ionicons
-          style={{ textAlign: "right" , paddingRight: 20}}
-          name="add-circle-sharp"
-          size={65}
-          color="blue"
-        />
+        <TouchableOpacity onPress={() => navigation.navigate("AddTodoScreen")}>
+          <Ionicons
+            style={{ textAlign: "right", paddingRight: 20 }}
+            name="add-circle-sharp"
+            size={65}
+            color="blue"
+          />
+        </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
     </View>
